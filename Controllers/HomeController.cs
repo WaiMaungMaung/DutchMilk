@@ -56,6 +56,8 @@ namespace DutchMilk.Controllers
         {
             var results = _repository.GetAllProducts();
                 return View(results.ToList());
+            return View(results.ToList());
+
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
