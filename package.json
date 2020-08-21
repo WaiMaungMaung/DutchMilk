@@ -1,0 +1,11 @@
+{
+  "version": "1.0.0",
+  "name": "asp.net",
+  "private": true,
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "jquery-validation": "^1.19.2",
+      
+  },
+  "devDependencies": {}
+}
