@@ -7,6 +7,11 @@ namespace DutchMilk.Data
     {
         IEnumerable<Product> GetAllProducts();
         IEnumerable<Product> GetProductByCategory(string category);
+        
+        IEnumerable<Order> GetAllOrders();
+        Order GetOrdersById(int id);
+
         bool SaveAll();
+        void AddEntity(object model);
     }
 }

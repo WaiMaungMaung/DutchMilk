@@ -1,16 +1,20 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
+using AutoMapper;
 using DutchMilk.Data;
 using DutchMilk.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
 
 namespace DutchMilk
 {
@@ -32,10 +36,18 @@ namespace DutchMilk
                     cfg.UseSqlServer(Configuration.GetConnectionString("DutchConnectionString"));
                 }
                 );
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddTransient<IMailService, NullMailService>();
+            services.AddScoped<IDutchRepository, DutchRepository>();
+
             services.AddTransient<DutchSeeder>();
 
-            services.AddScoped<IDutchRepository, DutchRepository>();
+            services.AddMvc()
+    .AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+);
+
+
 
             services.AddControllersWithViews();
         }

@@ -40,7 +40,7 @@ namespace DutchMilk.Controllers
             return View();
         }
         [HttpPost("contact")]
-        public IActionResult Contact(ContactModel model)
+        public IActionResult Contact(ContactViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -56,7 +56,6 @@ namespace DutchMilk.Controllers
         {
             var results = _repository.GetAllProducts();
                 return View(results.ToList());
-            return View(results.ToList());
 
         }
 

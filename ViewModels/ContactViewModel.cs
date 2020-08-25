@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DutchMilk.Models
 {
-    public class ContactModel
+    public class ContactViewModel
     {
         [Required]
         public string Name { get; set; }
